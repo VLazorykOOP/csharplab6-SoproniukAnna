@@ -1,58 +1,50 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab6 C# ");
-AnyFunc();
+﻿
+using Lab6CSharp;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+internal class Program
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
-
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    private static void Main(string[] args)
     {
-        public string Name { get; set; }
-        public UserClass()
+        Console.WriteLine("         Lab6 C# ");
+        Console.WriteLine("         Task 2 ");
+
+        IProduct[] products = new IProduct[]
         {
-            Name = "NoName";
+            new Toy("Teddy Bear", 15.99, "ToyCo", 3, "Plush"),
+            new Book("The Adventures of Tom Sawyer", 9.99, "BookPub", 10, "Mark Twain"),
+            new SportsEquipment("Football", 29.99, "SportsGear", 12),
+        };
+
+        Toy[] toys = new Toy[]
+        {
+            new Toy("Teddy Bear", 15.99, "ToyCo", 3, "Plush"),
+            new Toy("Doll", 20.00, "Barbi", 6, "Plush"),
+            new Toy("Wolf", 10.99, "ToyCo", 5, "Plush"),
+        };
+
+
+        foreach (var product in products)
+        {
+            product.DisplayInfo();
+            Console.WriteLine();
         }
-        UserClass(string n)
+
+        Console.WriteLine("\nSearch for Toys:");
+        foreach (var product in products)
         {
-            Name = n;
+            if (product.IsType("Toy"))
+            {
+                product.DisplayInfo();
+                Console.WriteLine();
+            }
+        }
+
+        Console.WriteLine();
+        foreach (var toy in toys)
+        {
+            toy.DisplayInfo();
+            Console.WriteLine();
         }
     }
+}
 
-}
-class UserClass
-{
-    public string Name { get; set; }
-}
