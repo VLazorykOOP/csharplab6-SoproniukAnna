@@ -23,13 +23,11 @@ namespace Lab6CSharp
         public string manufacturer { get; set; }
         public int ageGroup { get; set; }
 
-        // Реалізація методу для виведення інформації про спорт-інвентар
         public  void DisplayInfo()
         {
             Console.WriteLine($"Sports Equipment: {name}, Price: {price}, Manufacturer: {manufacturer}, Age Group: {ageGroup}");
         }
 
-        // Реалізація методу для визначення відповідності шуканому типу
         public  bool IsType(string type)
         {
             return type.Equals("SportsEquipment", StringComparison.OrdinalIgnoreCase);
